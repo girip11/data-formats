@@ -15,6 +15,10 @@
       "editor.wrappingIndent": "none"
     },
 
+    "[xml]": {
+      "editor.defaultFormatter": "redhat.vscode-xml",
+      "editor.formatOnSave": true
+    },
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
     "editor.wordWrap": "wordWrapColumn",
