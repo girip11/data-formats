@@ -1,0 +1,8 @@
+<!-- This file defines xs as the namespace and 
+    target namespace for the types defined in the schema file.
+`OrderNumType` belongs to the namespace http://example.org/ord -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://example.org/ord" targetNamespace="http://example.org/ord">
+    <xs:simpleType name="OrderNumType">
+        <xs:restriction base="xs:string" />
+    </xs:simpleType>
+</xs:schema>

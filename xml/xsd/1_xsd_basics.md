@@ -12,10 +12,11 @@
 
 XML schema contains
 
+* namespace of the target XML document
 * the elements and attributes present in a XML document.
 * number of child elements
 * data types of elements and attributes
-* default and fixed values for elements and attributes.
+* default and fixed values for elements and attributes as well as restrictions on those values.
 
 ## Example
 
@@ -80,6 +81,8 @@ xsi:schemaLocation="https://www.w3schools.com/xml note.xsd">
 
 * `elementFormDefault="qualified"` - Elements of the target XML document must be namespace qualified.
 
+**!!ExtremelyImportant!!**: All types defined in XSD using `simpleType` or `complexType` tags belong to the namespace defined by `targetNamespace` or `xmlns` defined in the schema file. If none of the two above mentioned attributes are defined in the schema file, then the types defined in the schema file do not belong to any namespace. This will come handy when learning about `xs:include` and `xs:import`
+
 ## XSD simple elements
 
 * Simple element is an element that only contains some data.
@@ -103,13 +106,15 @@ xsi:schemaLocation="https://www.w3schools.com/xml note.xsd">
 
 * XML element with attributes is considered to be a **complex element/type**.
 
+* We can control the number of occurrences of an element using the `maxOccurs` and `minOccurs` attributes. [By default both are set to 1, which makes the simple element required to be present exactly once.](https://stackoverflow.com/a/33686479/2369053)
+
 ## XSD attributes
 
 * Attributes in XML document can hold only data of the simple types.
 
 ```XML
 <!-- attribute in an XSD is defined as -->
-<xs:attribute name="attr_name" type="one_of_simple_types" />
+<xs:attribute name="attr_name" type="one_of_simple_types_or_derived_from_simple_type" />
 ```
 
 * Attributes can also have default and fixed values similar to simple elements.
@@ -128,6 +133,8 @@ xsi:schemaLocation="https://www.w3schools.com/xml note.xsd">
 ```
 
 ## Restriction on values
+
+* Simple elements and attributes can have custom types that are derived from simple types with restrictions or extensions added.
 
 ```XML
 <!-- restrict age value between 0 and 120 -->

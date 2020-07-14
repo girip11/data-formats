@@ -1,0 +1,9 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com" xmlns="http://example.com" elementFormDefault="qualified">
+
+    <xs:element name="root-element" type="roottype" />
+
+    <xs:complexType name="roottype">
+        <xs:sequence></xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

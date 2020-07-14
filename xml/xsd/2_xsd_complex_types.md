@@ -1,7 +1,11 @@
 # XSD Complex Elements and Types
 
-* A complex element contains other elements and/or attributes.
-* Empty elements with attributes are also complex elements.
+Complex elements can be
+
+* Empty elements with attributes
+* Elements with nested elements and/or attributes
+* Elements with attributes and text.
+* Elements with text data and nested elements and/or attributes.
 
 ```XML
 <employee>
@@ -45,7 +49,6 @@
 * `complexContent`, `extension`, elements are used when inheriting from another complex type.
 
 ```XML
-
 <xs:element name="employee" type="fullpersoninfo"/>
 
 <xs:complexType name="personinfo">
@@ -80,7 +83,21 @@
 </xs:element>
 ```
 
-* If we need to use any restriction on the attribute value, then the elements `xs:complexContent` and `xs:restriction` will be used
+* If we need to use any restriction or extension on the attribute value, then the elements `xs:complexContent` and `xs:restriction`/`xs:extension` will be used.
+
+```XML
+<Tree id="100"></Tree>
+
+<xs:element name="Tree">
+    <xs:complexType>
+        <xs:complexContent>
+            <xs:restriction base="xs:integer">
+                <xs:attribute name="id" type="xs:integer"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:element>
+```
 
 * Reusable representation of an empty element where attribute definitions can be reused.
 
@@ -92,7 +109,22 @@
 </xs:complexType>
 ```
 
-## Complex text only elements
+## Complex element with only nested elements
+
+```XML
+<xs:element name="employee" type="personinfo"/>
+
+<xs:complexType name="personinfo">
+  <xs:sequence>
+    <xs:element name="firstname" type="xs:string"/>
+    <xs:element name="lastname" type="xs:string"/>
+  </xs:sequence>
+  <!-- attributes will be present here -->
+  <xs:attribute name = 'empid' type = 'xs:positiveInteger'/>
+</xs:complexType>
+```
+
+## Complex element with text only
 
 * Example - `<shoesize country="france">35</shoesize>`
 
@@ -111,7 +143,7 @@
 </xs:complexType>
 ```
 
-## Complex types with text and child elements
+## Complex elements with text and child elements(mixed)
 
 * `mixed` attribute of `xs:complexType` should be set to true in this case
 
@@ -133,6 +165,8 @@
     </xs:sequence>
 </xs:complexType>
 ```
+
+**NOTE**: These definitions of different types of complex elements form the building block for building more complex elements.
 
 ---
 

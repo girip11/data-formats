@@ -43,7 +43,7 @@ XML - Extensible Markup Language
 
 ## XML elements naming convention
 
-* Use any on among the lowercase, UPPERCASE, snake_case, PascalCase or camelCase for the XML tags.
+* Use any on among the lowercase, UPPERCASE, snake_case, PascalCase or camelCase for the XML tags. But be consistent.
 * Use short, simple but descriptive names.
 * Avoid `- . :` in the names.
 
@@ -51,6 +51,9 @@ XML - Extensible Markup Language
 
 * Attributes are not easily expandable like XML tags
 * Attributes cannot be nested.
+* Attributes can hold values of simple types like string, integer, decimal, boolean, date, time.
+* A complex value can be stored as csv string in the attribute and then later parsed. **But the csv structure cannot be validated using as XSD**.
+* To store multiple values in attributes, we have to use some sort of encoding like csv, or space separated.
 
 **RECOMMENDATION:** Data should be stored as child nodes, while metadata of a node should be stored in its attributes.
 
