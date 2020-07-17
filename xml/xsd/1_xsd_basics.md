@@ -83,6 +83,10 @@ xsi:schemaLocation="https://www.w3schools.com/xml note.xsd">
 
 **!!ExtremelyImportant!!**: All types defined in XSD using `simpleType` or `complexType` tags belong to the namespace defined by `targetNamespace` or `xmlns` defined in the schema file. If none of the two above mentioned attributes are defined in the schema file, then the types defined in the schema file do not belong to any namespace. This will come handy when learning about `xs:include` and `xs:import`
 
+## Global elements
+
+Global elements are elements that are immediate children of the `<xs:schema>` element. Local elements are elements nested within other elements.
+
 ## XSD simple elements
 
 * Simple element is an element that only contains some data.
